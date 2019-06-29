@@ -11,6 +11,7 @@
     <modules>
         <module>thymeleaf-service</module>
         <module>thymeleaf-model</module>
+        <module>thymeleaf-web</module>
     </modules>
 
     <properties>
@@ -21,8 +22,9 @@
         <servlet.api.version>3.1.0</servlet.api.version>
         <jackson.version>2.8.10</jackson.version>
         <!--引入themeleaf-->
-        <thymeleaf.version> 3.0.2.RELEASE </thymeleaf.version>
-        <thymeleaf-layout-dialect.version> 2.1.1 </thymeleaf-layout-dialect.version>
+        <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +47,10 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
         </dependency>
         <dependency>
@@ -63,10 +69,11 @@
         <!--<artifactId>tomcat-juli</artifactId>-->
         <!--<version>${tomcat.embed.version}</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -103,7 +110,18 @@
     </dependencies>
 
     <build>
+        <!--生成war包名称-->
+        <finalName>thymeleaf-web</finalName>
         <plugins>
+            <!--maven打包时候告诉不需要web.xml，否则回报找不到web.xml错误-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

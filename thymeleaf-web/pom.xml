@@ -7,11 +7,13 @@
         <groupId>com.yung.auto.web.thymeleaf</groupId>
         <artifactId>thymeleaf</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.yung.auto.web.thymeleaf</groupId>
     <artifactId>thymeleaf-web</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>

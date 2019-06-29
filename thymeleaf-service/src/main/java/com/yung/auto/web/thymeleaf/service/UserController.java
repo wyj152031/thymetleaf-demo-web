@@ -19,7 +19,7 @@ public class UserController {
 
     @RequestMapping("/{id}")
     public String getUser(@PathVariable Integer id, Model model) {
-        model.addAttribute("user",new User(id,"袁婕",18,"美国加州"));
+        model.addAttribute("user",new User(id,"小仙女",18,"扬州"));
         return "user/detail";
     }
 
@@ -28,7 +28,7 @@ public class UserController {
         List<User> users = new ArrayList<>();
 
         for(int i=0;i<10;i++) {
-            users.add(new User(i,"yuanjie"+i,18,"中国南京"+i));
+            users.add(new User(i,"wanglin"+i,18,"中国南京"+i));
         }
         model.addAttribute("users",users);
         return "/user/list";
